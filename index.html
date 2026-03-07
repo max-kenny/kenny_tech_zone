@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Max Tech Zone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./images/windows.png">
+  </head>
+  <body>
+
+    <section class="section--top">
+      
+      <canvas id="drawingCanvas"></canvas>
+
+      <div class="hero-title">
+        <h1>MAXIMILIANO|MAIDANA</h1>
+        <div class="location-tag">
+          Programador Fullstack Python & Sys Admin.
+        </div>
+      </div>
+
+      <div id="ventana-main" class="win95-window">
+        <div class="title-bar">
+          <div class="title-bar-text">Presentacion.exe</div>
+          <div class="title-bar-controls">
+            <button aria-label="Close" onclick="cerrarVentana('ventana-main')">X</button>
+          </div>
+        </div>
+
+        <div class="window-body">
+          <div style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="text-align: center;">
+              <img src="./images/mipc.ico" alt="Max Profile" style="width: 64px; height: 64px;">
+              <p style="font-size: 10px; margin-top: 5px;">User: Max</p>
+            </div>
+            
+            <div>
+              <p style="margin-top: 0; font-weight: bold; font-size: 18px;">Hola, soy Maxi.</p>
+              <p>Desarrollador IT en formación. Amante de la tecnología vintage y el software libre.</p>
+              
+              <fieldset style="border: 2px groove white; padding: 10px; margin-top: 10px;">
+                <legend>Intereses.ini</legend>
+                <ul style="list-style-type: square; padding-left: 20px; margin: 0;">
+                  <li>Python & Data Analysis</li>
+                  <li>GNU/Linux </li>
+                  <li>Redes & Automatización</li>
+                </ul>
+              </fieldset>
+            </div>
+          </div>
+          
+          <div class="border" style="margin: 15px 0;"></div>
+          
+          <div style="text-align: center;">
+            <a href="mailto:m3maximaidana@gmail.com" class="win95-btn">Contactar</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section--work">
+      <div class="gallery">
+          
+        <div class="gallery__item" onclick="abrirVentana('ventana-main')">
+          <img class="gallery__img" src="./images/mipc.ico" alt="Info">
+          <p class="gallery__caption">Sobre_Mi</p>
+        </div>
+
+        <div class="gallery__item" onclick="abrirVentana('ventana-proyectos')">
+          <img class="gallery__img" src="./images/carpeta.ico" alt="Proyectos">
+          <p class="gallery__caption">Proyectos</p>
+        </div>
+
+        <div class="gallery__item" onclick="abrirVentana('ventana-social')">
+          <img class="gallery__img" src="./images/mundo.ico" alt="Social"> 
+          <p class="gallery__caption">Redes</p>
+        </div>
+
+        <div class="gallery__item" onclick="abrirVentana('ventana-cv')">
+          <img class="gallery__img" src="./images/certificado.ico" alt="CV">
+          <p class="gallery__caption">CV</p>
+        </div>
+
+        <div class="gallery__item" onclick="alert('La papelera está vacía.')">
+          <img class="gallery__img" src="./images/papelera.ico" alt="Papelera">
+           <p class="gallery__caption">Papelera</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="ventana-proyectos" class="win95-window modal-window" style="display: none;">
+        <div class="title-bar">
+            <div class="title-bar-text">C:\Proyectos</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="cerrarVentana('ventana-proyectos')">X</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img src="./images/carpeta.ico" style="width: 32px;">
+            </div>
+            
+            <ul style="list-style: none; padding: 0;">
+                
+                <li style="margin-bottom: 15px; border: 1px inset #fff; padding: 10px; background-color: #e0e0e0;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                        <img src="./images/mundo.ico" style="width: 20px;">
+                        <strong>Blog de Viaje(WordPress)</strong>
+                    </div>
+                    <p style="font-size: 12px; margin: 0 0 10px 0;">
+                        Desarrollo full-stack en entorno local. Enfoque en diseño moderno y actual.
+                    </p>
+                    <img src="./images/mi-blog.gif" alt="Demo de mi WordPress" style="width: 100%; border: 2px solid #808080; margin-bottom: 10px;">
+                    <button class="win95-btn" onclick="alert('Este proyecto corre en servidor local por el momento. Próximamente estará disponible con hosting.')">
+                        Ver Detalles
+                    </button>
+                </li>
+
+                <li style="margin-bottom: 10px;">
+                    <strong>📂 Análisis Ventas:</strong> <small>Automatización con Python.</small>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <strong>📂 Web Birra:</strong> <small>Landing Page Retro.</small>
+                </li>
+                <li>
+                    <strong>📂 Scripts:</strong> <small>Bash para servidores Linux.</small>
+                </li>
+            </ul>
+            
+            <div style="text-align: right; margin-top: 15px;">
+                <button class="win95-btn" onclick="cerrarVentana('ventana-proyectos')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ventana-social" class="win95-window modal-window" style="display: none;">
+        <div class="title-bar">
+            <div class="title-bar-text">Mis Redes</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="cerrarVentana('ventana-social')">X</button>
+            </div>
+        </div>
+        <div class="window-body" style="text-align: center;">
+            <p>Conecta conmigo:</p>
+            <br>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                
+                <a href="https://www.linkedin.com/in/maximiliano-maidana-5a298a265/" target="_blank" class="win95-btn">
+                    <img src="./images/mundo.ico" width="16"> LinkedIn
+                </a>
+                
+                <a href="https://github.com/max-kenny" target="_blank" class="win95-btn">
+                    <img src="./images/mipc.ico" width="16"> GitHub
+                </a>
+                
+            </div>
+            <br>
+            <button class="win95-btn" onclick="cerrarVentana('ventana-social')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="ventana-cv" class="win95-window modal-window" style="display: none;">
+        <div class="title-bar">
+            <div class="title-bar-text">Visor de CV</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="cerrarVentana('ventana-cv')">X</button>
+            </div>
+        </div>
+        <div class="window-body" style="text-align: center;">
+            <img src="./images/certificado.ico" style="width: 48px; margin-bottom: 10px;">
+            <p>CV_Maximiliano_Maidana.pdf</p>
+            <br>
+            
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                
+                <a href="./cv-maximiliano- maidana.pdf" target="_blank" class="win95-btn">👁️ Ver</a>
+                
+                <a href="./cv-maximiliano- maidana.pdf" download class="win95-btn">💾 Descargar</a>
+                
+                <button class="win95-btn" onclick="cerrarVentana('ventana-cv')">Cancelar</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="start-menu" class="start-menu" style="display: none;">
+      <div class="start-sidebar">
+        <span class="vertical-text">MAX<strong>95</strong></span>
+      </div>
+      <ul class="start-options">
+        <li onclick="alert('Portafolio v1.0 - Creado por Maxi')"><img src="./images/mipc.ico"> Información</li>
+        <li class="divider"></li>
+        <li onclick="window.close()"><img src="./images/papelera.ico"> Apagar</li>
+      </ul>
+    </div>
+
+    <div class="taskbar">
+      <button class="start-btn" onclick="toggleInicio()">
+        <img src="./images/windows.png" alt="Win" class="start-icon">
+        <span style="font-weight: bold;">Inicio</span>
+      </button>
+      <div class="taskbar-divider"></div>
+      <div class="notification-area">
+        <span id="reloj">12:00</span>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
