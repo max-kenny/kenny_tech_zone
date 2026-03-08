@@ -7,36 +7,29 @@ html, body {
   background-color: #008080; /* Teal Windows 95 */
   font-family: 'Courier New', Courier, monospace; 
   font-weight: bold;
-  overflow: hidden; /* Sin scroll para que sea como una app real */
+  overflow: hidden; 
   color: black;
   cursor:url('./images/flecha.png'), auto;
-} ; 
-
+}
 
 * { box-sizing: border-box; }
 
 /* =========================================
    1. SECCIÓN PRINCIPAL (FANTASMA)
    ========================================= */
-
 .section--top {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  
-  /* CAMBIO CLAVE: */
-  justify-content: flex-start; /* Alineamos desde ARRIBA hacia abajo */
-  align-items: center;         /* Mantiene todo perfectamente CENTRADO a los costados */
-  
-  padding-top: 80px;           /* Espacio desde el techo hasta el título */
-  gap: 60px;                   /* Espacio de separación entre el Título y la Ventana */
-  
+  justify-content: flex-start; 
+  align-items: center;         
+  padding-top: 80px;           
+  gap: 60px;                   
   position: relative;
   z-index: 10;
   pointer-events: none;
 }
-
 
 #drawingCanvas {
   position: absolute;
@@ -44,9 +37,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Al fondo */
-  
-  /* ¡LA SOLUCIÓN! El canvas SÍ recibe clics */
+  z-index: 0; 
   pointer-events: auto; 
   cursor: crosshair;
 }
@@ -59,7 +50,7 @@ html, body {
   text-align: center;
   margin: 0;
   z-index: 20;
-  pointer-events: auto; /* Título sólido */
+  pointer-events: auto; 
 }
 
 .hero-title h1 {
@@ -87,21 +78,19 @@ html, body {
 }
 
 .win95-window {
-background-color: #c0c0c0;
+  background-color: #c0c0c0;
   border-top: 2px solid #dfdfdf;
   border-left: 2px solid #dfdfdf;
   border-right: 2px solid #000000;
   border-bottom: 2px solid #000000;
   box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
   padding: 4px;
-  
   width: 90%;
   max-width: 600px;
-  
-  /* CAMBIO CLAVE: */
-  margin: 0; /* Sin márgenes, Flexbox la centra sola */
-  
-  position: relative;
+  position: fixed; /* Centrado fijo */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 100;
   pointer-events: auto;
 }
@@ -113,11 +102,12 @@ background-color: #c0c0c0;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  cursor: move;       /* Muestra la manito de mover */
-  user-select: none;  /* Evita que se seleccione el texto al arrastrar */
-
+  cursor: move;       
+  user-select: none;  
 }
+
 .title-bar-text { color: white; letter-spacing: 1px; }
+
 .title-bar-controls button {
   background: #c0c0c0;
   border: 1px solid black;
@@ -126,7 +116,6 @@ background-color: #c0c0c0;
   cursor: pointer;
   font-weight: bold;
 }
-.title-bar-controls button:active { border: 1px solid black; }
 
 .win95-btn {
   background: #c0c0c0;
@@ -139,7 +128,6 @@ background-color: #c0c0c0;
   cursor: pointer;
   display: inline-block;
 }
-.win95-btn:active { border: 2px solid black; border-bottom-color: white; border-right-color: white; }
 
 /* =========================================
    3. ICONOS (IZQUIERDA)
@@ -150,7 +138,7 @@ background-color: #c0c0c0;
   left: 20px;
   width: auto;
   z-index: 50;
-  pointer-events: auto; /* Iconos sólidos */
+  pointer-events: auto; 
 }
 
 .gallery {
@@ -166,29 +154,16 @@ background-color: #c0c0c0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid transparent;
 }
-.gallery__item:hover {
-  background-color: #000080;
-  border: 1px dotted yellow;
-}
-.gallery__item:hover .gallery__caption { background-color: #000080; }
 
-.gallery__img {
-  width: 48px; height: 48px;
-  margin-bottom: 5px;
-  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.3));
-}
-.gallery__caption {
-  color: white;
-  text-shadow: 1px 1px 1px black;
-  font-size: 12px;
-  font-family: sans-serif;
-  padding: 2px;
-}
+.gallery__item:hover { background-color: #000080; outline: 1px dotted yellow; }
+
+.gallery__img { width: 48px; height: 48px; margin-bottom: 5px; }
+
+.gallery__caption { color: white; text-shadow: 1px 1px 1px black; font-size: 12px; }
 
 /* =========================================
-   4. BARRA DE TAREAS Y MODALES
+   4. BARRA DE TAREAS Y MENÚ INICIO (FIXED)
    ========================================= */
 .taskbar {
   position: fixed; bottom: 0; left: 0;
@@ -197,9 +172,9 @@ background-color: #c0c0c0;
   border-top: 2px solid #dfdfdf;
   display: flex; justify-content: space-between; align-items: center;
   z-index: 9999;
-  pointer-events: auto;
   padding: 2px;
 }
+
 .start-btn {
   display: flex; align-items: center;
   height: 32px;
@@ -208,42 +183,84 @@ background-color: #c0c0c0;
   border-top-color: white; border-left-color: white;
   cursor: pointer; font-weight: bold;
 }
+
 .start-btn:active { border: 2px solid black; border-bottom-color: white; border-right-color: white; }
-.start-icon { width: 20px; margin-right: 5px; }
 
 .notification-area {
   background: #c0c0c0;
   border: 2px solid white; border-top-color: gray; border-left-color: gray;
   padding: 5px 10px;
-  margin-right: 2px;
   font-size: 12px;
 }
 
+/* MENÚ INICIO REPARADO SIN FRANJAS */
 .start-menu {
-  position: fixed; bottom: 42px; left: 2px;
+  position: fixed; bottom: 40px; left: 2px;
   width: 200px;
   background-color: #c0c0c0;
   border: 2px solid black; border-top-color: white; border-left-color: white;
-  display: flex;
+  display: none; /* Se activa como 'flex' por JS */
   z-index: 10000;
-  pointer-events: auto;
+  flex-direction: row;
 }
+
 .start-sidebar {
-  width: 30px; background: linear-gradient(180deg, #000080, #1084d0);
+  width: 30px; 
+  background: linear-gradient(180deg, #000080, #1084d0);
   display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px;
+  flex-shrink: 0;
 }
+
 .vertical-text {
   writing-mode: vertical-rl; transform: rotate(180deg);
-  color: white; font-weight: bold;
+  color: white; font-weight: bold; font-family: sans-serif;
 }
-.start-options { list-style: none; padding: 0; margin: 0; width: 100%; }
-.start-options li { padding: 10px; cursor: pointer; display: flex; align-items: center; }
+
+.start-options { 
+  list-style: none; padding: 0; margin: 0; width: 100%; 
+  background-color: #c0c0c0; /* Fondo gris para evitar el azul */
+}
+
+.start-options li { 
+  padding: 10px; cursor: pointer; display: flex; align-items: center; 
+  background-color: #c0c0c0; /* Fondo gris para cada item */
+  color: black;
+}
+
 .start-options li:hover { background: #000080; color: white; }
+
 .start-options li img { width: 24px; margin-right: 10px; }
 
-.modal-window {
-  position: fixed; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5000;
-  pointer-events: auto;
+/* Línea divisoria prolija */
+.divider {
+  height: 1px;
+  background: #808080;
+  border-bottom: 1px solid #fff;
+  margin: 2px 0;
+  pointer-events: none;
+}
+
+/* SCROLLBAR RETRO PARA PROYECTOS */
+#ventana-proyectos .window-body::-webkit-scrollbar { width: 16px; }
+#ventana-proyectos .window-body::-webkit-scrollbar-track {
+  background: #dfdfdf;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+}
+#ventana-proyectos .window-body::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+  border: 1px solid #000;
+}
+/* --- RESALTADO DEL DÍA ACTUAL EN EL CALENDARIO --- */
+.today {
+    background-color: #000080 !important; /* Azul oscuro clásico de Windows */
+    color: white !important;               /* Texto blanco para que resalte */
+    font-weight: bold;
+    border: 1px dotted white;            /* El efecto de foco clásico */
+}
+
+/* Opcional: Para que los días se vean mejor al pasar el mouse */
+#ventana-calendario td:hover:not(.today) {
+    background-color: #dfdfdf;
+    cursor: default;
 }
