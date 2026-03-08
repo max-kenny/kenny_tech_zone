@@ -264,3 +264,61 @@ html, body {
     background-color: #dfdfdf;
     cursor: default;
 }
+/* =========================================
+   5. RESPONSIVE DESIGN (PARA CELULARES)
+   ========================================= */
+
+@media (max-width: 600px) {
+  /* Título principal más chico para que no se corte */
+  .hero-title h1 {
+    font-size: 30px !important;
+    text-shadow: 2px 2px 0px #000080, 3px 3px 0px #000000 !important;
+  }
+
+  /* Ventanas: las hacemos casi del ancho total */
+  .win95-window {
+    width: 95% !important;
+    max-width: none !important;
+    top: 50% !important;
+    left: 50% !important;
+  }
+
+  /* Ajustamos el padding de las secciones para que no se amontonen */
+  .section--top {
+    padding-top: 40px;
+    gap: 30px;
+  }
+
+  /* Iconos del escritorio: más chicos y en fila si es necesario */
+  .section--work {
+    top: auto;
+    bottom: 60px; /* Los subimos para que no los tape la barra de tareas */
+    left: 10px;
+  }
+
+  .gallery {
+    flex-direction: row; /* En el celu, mejor si van de izquierda a derecha */
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .gallery__item {
+    width: 70px;
+  }
+
+  .gallery__img {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Barra de tareas: ocultamos el reloj si no entra bien, o lo achicamos */
+  .notification-area {
+    padding: 2px 5px;
+  }
+
+  /* El menú inicio: que ocupe un poco más de ancho */
+  .start-menu {
+    width: 85%;
+    bottom: 40px;
+  }
+}
