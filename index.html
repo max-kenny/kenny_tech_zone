@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="./images/windows.png">
     <style>
-        /* 1. Forzamos el ancho de la barra */
+        
         #ventana-proyectos .window-body::-webkit-scrollbar {
             width: 16px !important;
             display: block !important;
         }
 
-        /* 2. El fondo (Carril) con efecto hundido */
+        
         #ventana-proyectos .window-body::-webkit-scrollbar-track {
             background: #dfdfdf !important;
             box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff !important;
         }
 
-        /* 3. El "fierrito" (Thumb) con relieve de botón real */
+        
         #ventana-proyectos .window-body::-webkit-scrollbar-thumb {
             background: #c0c0c0 !important;
             border: 1px solid #000000 !important;
             box-shadow: inset 1px 1px #ffffff, inset -1px -1px #808080 !important;
         }
 
-        /* 4. Las flechitas de arriba y abajo */
+        
         #ventana-proyectos .window-body::-webkit-scrollbar-button {
             background-color: #c0c0c0 !important;
             display: block !important;
@@ -89,7 +89,7 @@
 
     </section>
 
-    <section class="section--work">
+    <section class="section--work pc-only-icons">
       <div class="gallery">
           
         <div class="gallery__item" onclick="abrirVentana('ventana-main')">
@@ -112,11 +112,56 @@
           <p class="gallery__caption">CV</p>
         </div>
 
-        <div class="gallery__item" onclick="alert('La papelera está vacía.')">
+        <div class="gallery__item" onclick="abrirPapelera()">
           <img class="gallery__img" src="./images/papelera.ico" alt="Papelera">
            <p class="gallery__caption">Papelera</p>
         </div>
 
+      </div>
+    </section>
+    <section class="pc-only-icons icons-right">
+      <div class="gallery">
+        
+        <div class="gallery__item" onclick="abrirPapelera()">
+          <img class="gallery__img" src="./images/redes-datos.ico" alt="Redes">
+          <p class="gallery__caption">Infrastructuras_de_Red</p>
+        </div>
+
+        <div class="gallery__item" onclick="abrirPapelera()">
+          <img class="gallery__img" src="./images/linux.png" alt="Linux">
+          <p class="gallery__caption">GNU_Linux</p>
+        </div>
+
+        <div class="gallery__item" onclick="abrirPapelera()">
+          <img class="gallery__img" src="./images/mipc.ico" alt="Hardware">
+          <p class="gallery__caption">KennyTech</p>
+        </div>
+
+      </div>
+    </section>
+    <section class="mobile-only-icons mobile-top">
+      <div class="gallery">
+        <div class="gallery__item" onclick="abrirVentana('ventana-main')">
+          <img src="images/mipc.ico" class="gallery__img">
+          <span class="gallery__caption">Sobre_Mi</span>
+        </div>
+        <div class="gallery__item" onclick="abrirVentana('ventana-proyectos')">
+          <img src="images/carpeta.ico" class="gallery__img">
+          <span class="gallery__caption">Proyectos</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-only-icons mobile-bottom">
+      <div class="gallery">
+        <div class="gallery__item" onclick="abrirVentana('ventana-social')">
+          <img src="images/mundo.ico" class="gallery__img">
+          <span class="gallery__caption">Redes</span>
+        </div>
+        <div class="gallery__item" onclick="abrirVentana('ventana-cv')">
+          <img src="images/certificado.ico" class="gallery__img">
+          <span class="gallery__caption">Mi_CV</span>
+        </div>
       </div>
     </section>
 
@@ -208,6 +253,7 @@
             <button class="win95-btn" onclick="cerrarVentana('ventana-social')">Cerrar</button>
         </div>
     </div>
+
     <div id="ventana-calendario" class="win95-window" style="display: none; width: 220px; position: fixed; bottom: 45px; right: 5px; transform: none; left: auto; top: auto; z-index: 10001;">
       <div class="title-bar">
         <div class="title-bar-text">Fecha/Hora</div>
@@ -235,6 +281,7 @@
         </table>
       </div>
     </div>
+
     <div id="ventana-cv" class="win95-window modal-window" style="display: none;">
         <div class="title-bar">
             <div class="title-bar-text">Visor de CV</div>
@@ -258,15 +305,59 @@
             </div>
         </div>
     </div>
-
-    <div id="start-menu" class="start-menu" style="display: none;">
+    <div id="ventana-info" class="win95-window" style="display: none; width: 350px; z-index: 10010;">
+        <div class="title-bar">
+            <div class="title-bar-text">Información del Sistema</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="cerrarVentana('ventana-info')">X</button>
+            </div>
+        </div>
+        <div class="window-body" style="padding: 15px;">
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <img src="./images/foco.ico" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Ideas">
+                <div>
+                    <p style="margin-top: 0; font-weight: bold; font-size: 14px;">Max Tech Zone v1.0</p>
+                    <p style="font-size: 12px; line-height: 1.4;">
+                        Este portfolio es un tributo a la computación clásica de los 90.<br><br>
+                        
+                        <strong>Desarrollado por :</strong> Maxi Maidana
+                    </p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #808080; border-bottom: 1px solid #fff; margin: 15px 0;"></div>
+            <div style="text-align: right;">
+                <button class="win95-btn" onclick="cerrarVentana('ventana-info')" style="min-width: 80px;">Aceptar</button>
+            </div>
+        </div>
+    </div> <div id="ventana-construccion" class="win95-window" style="display: none; width: 340px; z-index: 10005;">
+        <div class="title-bar">
+            <div class="title-bar-icon">
+                <img src="./images/papelera.ico" style="width: 16px; height: 16px; margin-right: 2px;">
+            </div>
+            <div class="title-bar-text">Error de Reciclaje</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="cerrarVentana('ventana-construccion')">X</button>
+            </div>
+        </div>
+        <div class="window-body" style="padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <div style="text-align: center; margin-bottom: 5px;">
+                <img src="./images/construccion.ico" style="width: 64px; height: 64px; image-rendering: pixelated; margin-bottom: 5px;" alt="En Construcción">
+            </div>
+            <p style="margin: 0; font-size: 12px; font-family: Arial, sans-serif; font-weight: normal; text-align: center; line-height: 1.4; color: black;">
+                <strong>C:\RECYCLED está en mantenimiento.</strong>
+            </p>
+            <div style="margin-top: 5px;">
+                <button class="win95-btn" onclick="cerrarVentana('ventana-construccion')" style="min-width: 80px;">Aceptar</button>
+            </div>
+        </div>
+    </div> </div> <div id="start-menu" class="start-menu" style="display: none;">
       <div class="start-sidebar">
         <span class="vertical-text">MAX<strong>95</strong></span>
       </div>
       <ul class="start-options">
-        <li onclick="alert('Portafolio v1.0 - Creado por Maxi')"><img src="./images/mipc.ico"> Información</li>
+        <li onclick="abrirVentana('ventana-info')"><img src="./images/mipc.ico"> Información</li>
         <li class="divider"></li>
-        <li onclick="window.close()"><img src="./images/papelera.ico"> Apagar</li>
+        <li onclick="window.close()"><img src="./images/apagado.png"> Apagar</li>
       </ul>
     </div>
 
@@ -281,6 +372,7 @@
       </div>
     </div>
 
+    <audio id="audio-error" src="./sound/error.mp3" preload="auto"></audio>
     <script src="script.js"></script>
   </body>
 </html>

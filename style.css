@@ -87,7 +87,7 @@ html, body {
   padding: 4px;
   width: 90%;
   max-width: 600px;
-  position: fixed; /* Centrado fijo */
+  position: fixed; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -130,7 +130,7 @@ html, body {
 }
 
 /* =========================================
-   3. ICONOS (IZQUIERDA)
+   3. ICONOS (COMPUTADORA)
    ========================================= */
 .section--work {
   position: absolute;
@@ -157,13 +157,16 @@ html, body {
 }
 
 .gallery__item:hover { background-color: #000080; outline: 1px dotted yellow; }
-
 .gallery__img { width: 48px; height: 48px; margin-bottom: 5px; }
-
 .gallery__caption { color: white; text-shadow: 1px 1px 1px black; font-size: 12px; }
 
+/* VISIBILIDAD DE ICONOS CELULAR (OCULTOS POR DEFECTO) */
+.mobile-only-icons {
+  display: none;
+}
+
 /* =========================================
-   4. BARRA DE TAREAS Y MENÚ INICIO (FIXED)
+   4. BARRA DE TAREAS Y MENÚ INICIO
    ========================================= */
 .taskbar {
   position: fixed; bottom: 0; left: 0;
@@ -171,7 +174,7 @@ html, body {
   background-color: #c0c0c0;
   border-top: 2px solid #dfdfdf;
   display: flex; justify-content: space-between; align-items: center;
-  z-index: 9999;
+  z-index: 9999 !important;
   padding: 2px;
 }
 
@@ -184,8 +187,6 @@ html, body {
   cursor: pointer; font-weight: bold;
 }
 
-.start-btn:active { border: 2px solid black; border-bottom-color: white; border-right-color: white; }
-
 .notification-area {
   background: #c0c0c0;
   border: 2px solid white; border-top-color: gray; border-left-color: gray;
@@ -193,13 +194,12 @@ html, body {
   font-size: 12px;
 }
 
-/* MENÚ INICIO REPARADO SIN FRANJAS */
 .start-menu {
   position: fixed; bottom: 40px; left: 2px;
   width: 200px;
   background-color: #c0c0c0;
   border: 2px solid black; border-top-color: white; border-left-color: white;
-  display: none; /* Se activa como 'flex' por JS */
+  display: none; 
   z-index: 10000;
   flex-direction: row;
 }
@@ -218,20 +218,18 @@ html, body {
 
 .start-options { 
   list-style: none; padding: 0; margin: 0; width: 100%; 
-  background-color: #c0c0c0; /* Fondo gris para evitar el azul */
+  background-color: #c0c0c0;
 }
 
 .start-options li { 
   padding: 10px; cursor: pointer; display: flex; align-items: center; 
-  background-color: #c0c0c0; /* Fondo gris para cada item */
+  background-color: #c0c0c0;
   color: black;
 }
 
 .start-options li:hover { background: #000080; color: white; }
-
 .start-options li img { width: 24px; margin-right: 10px; }
 
-/* Línea divisoria prolija */
 .divider {
   height: 1px;
   background: #808080;
@@ -240,7 +238,7 @@ html, body {
   pointer-events: none;
 }
 
-/* SCROLLBAR RETRO PARA PROYECTOS */
+/* SCROLLBAR RETRO */
 #ventana-proyectos .window-body::-webkit-scrollbar { width: 16px; }
 #ventana-proyectos .window-body::-webkit-scrollbar-track {
   background: #dfdfdf;
@@ -251,74 +249,87 @@ html, body {
   box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
   border: 1px solid #000;
 }
-/* --- RESALTADO DEL DÍA ACTUAL EN EL CALENDARIO --- */
+
 .today {
-    background-color: #000080 !important; /* Azul oscuro clásico de Windows */
-    color: white !important;               /* Texto blanco para que resalte */
+    background-color: #000080 !important;
+    color: white !important;
     font-weight: bold;
-    border: 1px dotted white;            /* El efecto de foco clásico */
+    border: 1px dotted white;
 }
 
-/* Opcional: Para que los días se vean mejor al pasar el mouse */
-#ventana-calendario td:hover:not(.today) {
-    background-color: #dfdfdf;
-    cursor: default;
-}
 /* =========================================
-   5. RESPONSIVE DESIGN (PARA CELULARES)
+   5. DISEÑO RESPONSIVE (OPTIMIZADO)
    ========================================= */
-
 @media (max-width: 600px) {
-  /* Título principal más chico para que no se corte */
+  /* Título y cabecera */
+  .section--top {
+    padding-top: 20px !important; 
+    height: auto !important;
+  }
+
   .hero-title h1 {
-    font-size: 30px !important;
+    font-size: 20px !important;
     text-shadow: 2px 2px 0px #000080, 3px 3px 0px #000000 !important;
   }
 
-  /* Ventanas: las hacemos casi del ancho total */
-  .win95-window {
-    width: 95% !important;
-    max-width: none !important;
-    top: 50% !important;
-    left: 50% !important;
+  .location-tag {
+    font-size: 11px !important;
+    padding: 5px 10px !important;
   }
 
-  /* Ajustamos el padding de las secciones para que no se amontonen */
-  .section--top {
-    padding-top: 40px;
-    gap: 30px;
-  }
-
-  /* Iconos del escritorio: más chicos y en fila si es necesario */
+  /* Escritorio e íconos */
   .section--work {
-    top: auto;
-    bottom: 60px; /* Los subimos para que no los tape la barra de tareas */
-    left: 10px;
+    top: 130px !important; 
+    left: 0 !important;
+    width: 100% !important;
+    padding: 0 10px !important;
   }
 
   .gallery {
-    flex-direction: row; /* En el celu, mejor si van de izquierda a derecha */
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 15px !important;
+    justify-items: center !important;
   }
 
-  .gallery__item {
-    width: 70px;
+  .gallery__item { width: 85px !important; }
+  .gallery__img { width: 32px !important; height: 32px !important; }
+  .gallery__caption { font-size: 10px !important; }
+
+  /* Ventana de Presentación (y otras) */
+  #ventana-main, .win95-window {
+    width: 95% !important;
+    max-height: 75vh !important;
+    top: 50% !important;
+    left: 2.5% !important;
+    transform: translateY(-50%) !important;
+    overflow-y: auto !important;
+    position: fixed;
+    /* QUITAMOS el !important del display para que el JS pueda mandarlo */
   }
 
-  .gallery__img {
-    width: 32px;
-    height: 32px;
+  /* Barra de tareas */
+  .taskbar {
+    height: 40px !important;
+    bottom: 0 !important;
+    position: fixed !important;
+    z-index: 99999 !important;
   }
+}
 
-  /* Barra de tareas: ocultamos el reloj si no entra bien, o lo achicamos */
-  .notification-area {
-    padding: 2px 5px;
-  }
+.icons-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10; /* Por debajo de las ventanas, pero sobre el fondo */
+}
 
-  /* El menú inicio: que ocupe un poco más de ancho */
-  .start-menu {
-    width: 85%;
-    bottom: 40px;
-  }
+/* Forzamos que los items se apilen verticalmente a la derecha */
+.icons-right .gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

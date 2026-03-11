@@ -186,3 +186,61 @@ document.addEventListener('mousedown', function(event) {
     }
   }
 });
+
+// ==========================================
+// 5. CONTROL DE BIENVENIDA (PC vs MOBILE)
+// ==========================================
+window.addEventListener('load', () => {
+    const ventana = document.getElementById('ventana-main');
+    if (!ventana) return;
+
+    // Usamos un pequeño delay de 100ms para asegurar que el CSS no nos gane
+    setTimeout(() => {
+        if (window.innerWidth > 600) {
+            // --- COMPORTAMIENTO PARA PC ---
+            ventana.style.display = 'block'; // Forzamos apertura
+            zIndexCounter++;
+            ventana.style.zIndex = zIndexCounter;
+            
+            // Centrado total
+            ventana.style.position = 'fixed';
+            ventana.style.top = '50%';
+            ventana.style.left = '50%';
+            ventana.style.transform = 'translate(-50%, -50%)';
+        } else {
+            // --- COMPORTAMIENTO PARA CELULAR ---
+            ventana.style.display = 'none'; // Nos aseguramos que esté cerrada
+        }
+    }, 100); 
+});
+
+function abrirPapelera() {
+    const audio = document.getElementById('audio-error');
+    if (audio) {
+        audio.load(); // Esto le dice al navegador: "Cargalo YA"
+        audio.currentTime = 0;
+        
+        // Intentamos reproducir
+        let playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                console.log("¡TÁN! Sonando...");
+            }).catch(error => {
+                console.log("El navegador bloqueó el audio. Hacé un clic en el fondo verde primero.");
+            });
+        }
+    }
+    abrirVentana('ventana-construccion');
+}
+
+// Desbloqueo de audio para navegadores modernos
+document.addEventListener('click', () => {
+    const audio = document.getElementById('audio-error');
+    if (audio) {
+        audio.play().then(() => {
+            audio.pause(); // Lo reproducimos y pausamos al toque para "avisar" al navegador
+            audio.currentTime = 0;
+        }).catch(() => {});
+    }
+}, { once: true }); // Solo se ejecuta la primera vez que haces clic
