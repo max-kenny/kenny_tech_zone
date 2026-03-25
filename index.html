@@ -122,9 +122,9 @@
     <section class="pc-only-icons icons-right">
       <div class="gallery">
         
-        <div class="gallery__item" onclick="abrirPapelera()">
-          <img class="gallery__img" src="./images/redes-datos.ico" alt="Redes">
-          <p class="gallery__caption">Infrastructuras_Red</p>
+        <div class="gallery__item" onclick="abrirVentana('ventana-carpeta-redes')">
+          <img class="gallery__img" src="./images/redes-datos.ico" alt="Labs">
+          <p class="gallery__caption">Laboratorio_Redes</p>
         </div>
 
         <div class="gallery__item" onclick="abrirPapelera()">
@@ -350,7 +350,179 @@
                 <button class="win95-btn" onclick="cerrarVentana('ventana-construccion')" style="min-width: 80px;">Aceptar</button>
             </div>
         </div>
-    </div> </div> <div id="start-menu" class="start-menu" style="display: none;">
+    </div> 
+
+    <div id="ventana-lab1-redes" class="win95-window" style="display: none; width: 550px; z-index: 10020;">
+        <div class="title-bar">
+            <div class="title-bar-text">C:\REDES\LAB1_CONECTIVIDAD.EXE</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="cerrarVentana('ventana-lab1-redes')">X</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                <img src="./images/redes-datos.ico" style="width: 32px;">
+                <p style="font-weight: bold; font-size: 14px; margin: 0;">Laboratorio 1: Conectividad y VLSM</p>
+            </div>
+
+            <div style="display: flex; gap: 10px; overflow-x: auto; padding: 10px; background: #808080; border: 2px inset #fff; margin-bottom: 10px;">
+                <div style="flex-shrink: 0; text-align: center;">
+                    <img src="./images/topo_gns3.png" style="height: 120px; border: 1px solid #000;" alt="Topología">
+                    <p style="font-size: 10px; color: white;">Topología GNS3</p>
+                </div>
+                <div style="flex-shrink: 0; text-align: center;">
+                    <img src="./images/tabla_vlsm.png" style="height: 120px; border: 1px solid #000;" alt="VLSM">
+                    <p style="font-size: 10px; color: white;">Subneteo VLSM</p>
+                </div>
+                <div style="flex-shrink: 0; text-align: center;">
+                    <img src="./images/ping_ok.png" style="height: 120px; border: 1px solid #000;" alt="Ping">
+                    <p style="font-size: 10px; color: white;">Verificación ICMP</p>
+                </div>
+            </div>
+
+            <fieldset style="border: 2px groove white; padding: 10px; margin-bottom: 10px;">
+                <legend>Resumen_Tecnico.txt</legend>
+                <p style="font-size: 12px; margin: 0;">
+                    Diseño de red de campus utilizando <strong>GNS3</strong> y contenedores <strong>Docker (Alpine)</strong>. 
+                    Se aplicó <strong>VLSM</strong> para segmentar la red 10.10.6.0/24 en 4 subredes funcionales.
+                </p>
+            </fieldset>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 11px;">Status: 100% Verified</span>
+                <div>
+                    <a href="./docs/tp1-redes-lab.Maidana..pdf" target="_blank" class="win95-btn" style="text-decoration: none; padding: 3px 10px;">Abrir Informe PDF</a>
+                    <button class="win95-btn" onclick="cerrarVentana('ventana-lab1-redes')">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ventana-lab4-redes" class="win95-window" style="display: none; width: 550px; z-index: 10020;">
+        <div class="title-bar">
+            <div class="title-bar-text">C:\REDES\LAB4_RIP_NAT.EXE</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="cerrarVentana('ventana-lab4-redes')">X</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                <img src="./images/redes-datos.ico" style="width: 32px;">
+                <p style="font-weight: bold; margin: 0;">Laboratorio 4: Enrutamiento Dinámico (RIP)</p>
+            </div>
+
+            <div style="display: flex; gap: 10px; overflow-x: auto; padding: 10px; background: #000080; border: 2px inset #fff; margin-bottom: 10px;">
+                <div style="flex-shrink: 0; text-align: center;">
+                    <img src="./images/topo_lab4.png" style="height: 120px; border: 1px solid #000;">
+                    <p style="font-size: 9px; color: white;">Topología GNS3</p>
+                </div>
+                <div style="flex-shrink: 0; text-align: center;">
+                    <img src="./images/ping_lab4.png" style="height: 120px; border: 1px solid #000;">
+                    <p style="font-size: 9px; color: white;">Verificación Ping</p>
+                </div>
+                <div style="flex-shrink: 0; text-align: center;">
+                    <img src="./images/wireshark_lab4.png" style="height: 120px; border: 1px solid #000;">
+                    <p style="font-size: 9px; color: white;">Captura Wireshark</p>
+                </div>
+            </div>
+
+            <fieldset style="border: 2px groove white; padding: 10px; margin-bottom: 10px;">
+                <legend>SysAdmin_Report.txt</legend>
+                <p style="font-size: 11px; margin: 0;">
+                    Configuración de <strong>RIP</strong> mediante <strong>Quagga</strong> en Alpine Linux. Implementación de <strong>NAT</strong> para salida a Internet.
+                </p>
+            </fieldset>
+
+            <div style="text-align: right;">
+                <a href="./docs/LAB_04_RdD- maidana.maximiliano.pdf" target="_blank" class="win95-btn" style="text-decoration: none; padding: 3px 10px;">Ver Informe PDF</a>
+                <button class="win95-btn" onclick="cerrarVentana('ventana-lab4-redes')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ventana-carpeta-redes" class="win95-window" style="display: none; width: 420px; z-index: 10015;">
+      <div class="title-bar">
+          <div class="title-bar-text">C:\REDES\LABS</div>
+          <div class="title-bar-controls">
+              <button aria-label="Close" onclick="cerrarVentana('ventana-carpeta-redes')">X</button>
+          </div>
+      </div>
+      <div class="window-body" style="background: white; min-height: 240px;">
+          <div style="display: flex; gap: 15px; padding: 20px; flex-wrap: wrap; justify-content: center;">
+              
+              <div onclick="abrirVentana('ventana-lab1-redes')" style="cursor: pointer; text-align: center; width: 90px;">
+                  <img src="./images/carpeta.ico" style="width: 32px; image-rendering: pixelated;">
+                  <p style="font-size: 11px; color: black; margin-top: 5px;">Lab1_VLSM.exe</p>
+              </div>
+
+              <div onclick="abrirVentana('ventana-lab4-redes')" style="cursor: pointer; text-align: center; width: 90px;">
+                  <img src="./images/carpeta.ico" style="width: 32px; image-rendering: pixelated;">
+                  <p style="font-size: 11px; color: black; margin-top: 5px;">Lab4_RIP.exe</p>
+              </div>
+
+              <div onclick="abrirVentana('ventana-lab5-redes')" style="cursor: pointer; text-align: center; width: 90px;">
+                  <img src="./images/carpeta.ico" style="width: 32px; image-rendering: pixelated;">
+                  <p style="font-size: 11px; color: black; margin-top: 5px;">Lab5_FW.exe</p>
+              </div>
+
+              </div>
+          </div>
+      <div class="status-bar">
+          <p class="status-bar-field">3 objeto(s) seleccionados</p>
+          <p class="status-bar-field">2.4 MB</p>
+      </div>
+    </div>
+      <div class="status-bar">
+          <p class="status-bar-field">2 objeto(s)</p>
+          <p class="status-bar-field">1.2 MB</p>
+      </div>
+    </div>
+    <div id="ventana-carpeta-redes" class="win95-window" style="display: none; width: 420px; z-index: 10015;">
+      <div class="title-bar">
+          <div class="title-bar-text">C:\REDES\LABS</div>
+          <div class="title-bar-controls"><button onclick="cerrarVentana('ventana-carpeta-redes')">X</button></div>
+      </div>
+      <div class="window-body" style="background: white; min-height: 240px;">
+          <div style="display: flex; gap: 15px; padding: 20px; flex-wrap: wrap; justify-content: center;">
+              <div onclick="abrirVentana('ventana-lab1-redes')" style="cursor: pointer; text-align: center; width: 90px;">
+                  <img src="./images/carpeta.ico" style="width: 32px;"><p style="font-size: 11px; color: black; margin-top: 5px;">Lab1_VLSM.exe</p>
+              </div>
+              <div onclick="abrirVentana('ventana-lab4-redes')" style="cursor: pointer; text-align: center; width: 90px;">
+                  <img src="./images/carpeta.ico" style="width: 32px;"><p style="font-size: 11px; color: black; margin-top: 5px;">Lab4_RIP.exe</p>
+              </div>
+              <div onclick="abrirVentana('ventana-lab5-redes')" style="cursor: pointer; text-align: center; width: 90px;">
+                  <img src="./images/carpeta.ico" style="width: 32px;"><p style="font-size: 11px; color: black; margin-top: 5px;">Lab5_FW.exe</p>
+              </div>
+          </div>
+      </div>
+      <div class="status-bar"><p class="status-bar-field">3 objeto(s)</p><p class="status-bar-field">2.4 MB</p></div>
+    </div>
+
+    <div id="ventana-lab5-redes" class="win95-window" style="display: none; width: 550px; z-index: 10020;">
+        <div class="title-bar">
+            <div class="title-bar-text">C:\REDES\LAB5_FIREWALL.EXE</div>
+            <div class="title-bar-controls"><button onclick="cerrarVentana('ventana-lab5-redes')">X</button></div>
+        </div>
+        <div class="window-body">
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                <img src="./images/redes-datos.ico" style="width: 32px;"><p style="font-weight: bold; margin: 0;">Laboratorio 5: Firewall e Iptables</p>
+            </div>
+            <div style="display: flex; gap: 10px; overflow-x: auto; padding: 10px; background: #800000; border: 2px inset #fff; margin-bottom: 10px;">
+                <img src="./images/topo_lab5.png" style="height: 120px; border: 1px solid #000;">
+                <img src="./images/iptables_rules.png" style="height: 120px; border: 1px solid #000;">
+                <img src="./images/nmap_filtered.png" style="height: 120px; border: 1px solid #000;">
+            </div>
+            <fieldset style="border: 2px groove white; padding: 10px; margin-bottom: 10px;">
+                <legend>Security_Audit.log</legend>
+                <p style="font-size: 11px; margin: 0;">Filtrado de paquetes y políticas DROP mediante Iptables.</p>
+            </fieldset>
+            <div style="text-align: right;">
+                <a href="./docs/TP_05_laboratorio-Maidana.pdf" target="_blank" class="win95-btn" style="text-decoration: none; padding: 3px 10px;">Ver PDF</a>
+                <button class="win95-btn" onclick="cerrarVentana('ventana-lab5-redes')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    <div id="start-menu" class="start-menu" style="display: none;">
       <div class="start-sidebar">
         <span class="vertical-text">MAX<strong>95</strong></span>
       </div>
