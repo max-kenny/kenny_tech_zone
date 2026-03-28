@@ -4,7 +4,7 @@ html, body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #008080; /* Teal Windows 95 */
+  background-color: #008080;
   font-family: 'Courier New', Courier, monospace; 
   font-weight: bold;
   overflow: hidden; 
@@ -15,7 +15,7 @@ html, body {
 * { box-sizing: border-box; }
 
 /* =========================================
-   1. SECCIÓN PRINCIPAL (FANTASMA)
+   1. SECCIÓN PRINCIPAL
    ========================================= */
 .section--top {
   width: 100vw;
@@ -43,7 +43,7 @@ html, body {
 }
 
 /* =========================================
-   2. TÍTULO Y VENTANAS (SÓLIDOS)
+   2. TÍTULO Y VENTANAS
    ========================================= */
 .hero-title {
   position: relative;
@@ -130,7 +130,7 @@ html, body {
 }
 
 /* =========================================
-   3. ICONOS (COMPUTADORA)
+   3. ICONOS
    ========================================= */
 .section--work {
   position: absolute;
@@ -160,9 +160,12 @@ html, body {
 .gallery__img { width: 48px; height: 48px; margin-bottom: 5px; }
 .gallery__caption { color: white; text-shadow: 1px 1px 1px black; font-size: 12px; }
 
-/* VISIBILIDAD DE ICONOS CELULAR (OCULTOS POR DEFECTO) */
 .mobile-only-icons {
   display: none;
+}
+
+.pc-only-icons {
+  display: block;
 }
 
 /* =========================================
@@ -258,78 +261,134 @@ html, body {
 }
 
 /* =========================================
-   5. DISEÑO RESPONSIVE (OPTIMIZADO)
+   5. DISEÑO RESPONSIVE
    ========================================= */
+
+/* --- CELULAR (MAX 600PX) --- */
 @media (max-width: 600px) {
-  /* Título y cabecera */
+
+  body > .status-bar {
+    display: none !important;
+  }
+
+  .pc-only-icons {
+    display: none !important;
+  }
+
+  .mobile-only-icons {
+    display: flex !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 20 !important;
+    pointer-events: auto !important;
+    width: 100% !important;
+  }
+
+  #drawingCanvas {
+    z-index: -1 !important;
+  }
+
   .section--top {
-    padding-top: 20px !important; 
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
     height: auto !important;
+    min-height: 0 !important;
+    position: relative !important;
+    z-index: 5 !important;
   }
 
   .hero-title h1 {
-    font-size: 20px !important;
+    font-size: 22px !important;
     text-shadow: 2px 2px 0px #000080, 3px 3px 0px #000000 !important;
   }
 
   .location-tag {
     font-size: 11px !important;
-    padding: 5px 10px !important;
+    margin-top: 5px !important;
   }
 
-  /* Escritorio e íconos */
-  .section--work {
-    top: 130px !important; 
+  .icons-right {
+    position: relative !important;
+    top: auto !important;
     left: 0 !important;
+    right: 0 !important;
     width: 100% !important;
-    padding: 0 10px !important;
+    display: flex !important;
+    justify-content: center !important;
+    z-index: 20 !important;
+  }
+
+  .mobile-only-icons {
+    display: flex !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 20 !important;
+    pointer-events: auto !important;
+    width: 100% !important;
+    margin-top: 60px !important;
   }
 
   .gallery {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; 
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 15px !important;
+    width: 100% !important;
     justify-items: center !important;
   }
 
-  .gallery__item { width: 85px !important; }
-  .gallery__img { width: 32px !important; height: 32px !important; }
-  .gallery__caption { font-size: 10px !important; }
-
-  /* Ventana de Presentación (y otras) */
-  #ventana-main, .win95-window {
-    width: 95% !important;
-    max-height: 75vh !important;
-    top: 50% !important;
-    left: 2.5% !important;
-    transform: translateY(-50%) !important;
-    overflow-y: auto !important;
-    position: fixed;
-    /* QUITAMOS el !important del display para que el JS pueda mandarlo */
+  /*
+   * FIX MOBILE: solo ancho y fondo.
+   * NO tocamos display, position, transform ni z-index
+   * porque el JS los maneja dinámicamente.
+   */
+  .win95-window {
+    width: 92% !important;
+    max-width: 92% !important;
+    background-color: #c0c0c0 !important;
+    background: #c0c0c0 !important;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.7) !important;
   }
 
-  /* Barra de tareas */
-  .taskbar {
-    height: 40px !important;
-    bottom: 0 !important;
-    position: fixed !important;
-    z-index: 99999 !important;
+  .window-body img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Imágenes de labs más chicas en mobile */
+  #ventana-lab1-redes .window-body img,
+  #ventana-lab4-redes .window-body img,
+  #ventana-lab5-redes .window-body img {
+    max-height: 80px !important;
   }
 }
 
-.icons-right {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10; /* Por debajo de las ventanas, pero sobre el fondo */
-}
+/* --- COMPUTADORA (MIN 601PX) --- */
+@media (min-width: 601px) {
+  .icons-right {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    width: auto !important;
+    display: block !important;
+    z-index: 50 !important;
+  }
 
-/* Forzamos que los items se apilen verticalmente a la derecha */
-.icons-right .gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  .section--work {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    display: block !important;
+    z-index: 50 !important;
+  }
+
+  .gallery {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  #drawingCanvas {
+    z-index: 0 !important;
+  }
 }
