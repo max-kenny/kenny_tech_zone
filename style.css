@@ -27,7 +27,7 @@ html, body {
   padding-top: 80px;           
   gap: 60px;                   
   position: relative;
-  z-index: 10;
+  z-index: 1;
   pointer-events: none;
 }
 
