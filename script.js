@@ -236,3 +236,24 @@ document.addEventListener('click', () => {
         }).catch(() => {});
     }
 }, { once: true });
+
+// ==========================================
+// 7. FUNCIÓN DE APAGADO
+// ==========================================
+function apagarEquipo() {
+    // 1. Intentamos cerrar normal
+    window.close();
+
+    // 2. Truco para navegadores que bloquean el cierre:
+    // Abrimos la pestaña sobre sí misma y cerramos.
+    window.open('', '_self', '');
+    window.close();
+
+    // 3. Si después de lo anterior sigue abierta (por seguridad del navegador), 
+    // lo mandamos a una página en blanco para que parezca "apagado".
+    setTimeout(() => {
+        if (!window.closed) {
+            window.location.href = "about:blank";
+        }
+    }, 200);
+}
